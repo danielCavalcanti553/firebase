@@ -1,23 +1,36 @@
 <ion-header>
-
+  <ion-navbar  color='primary'>
+    <ion-title>
+      Firebase Login
+    </ion-title>
+  </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <h3>LOGIN</h3>
-
-  <ion-list>
+  
+  <div *ngIf="user != null">
+    <h3>Bem vindo: {{ user.email }}</h3>
+    <br>
+    <br>
+    <button ion-button block  (click)="Sair()">Sair</button>
+  </div>
+<div *ngIf="user == null">
+    <br>
+    <h3>Login / Cadastro</h3>
     <ion-item>
-      <ion-label stacked>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label floating>
+      Usuário</ion-label>
+      <ion-input type="text" #usuario></ion-input>
     </ion-item>
+  
     <ion-item>
-
-      <ion-label stacked>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-label floating>
+      Senha </ion-label>
+      <ion-input type="password" #senha></ion-input>
     </ion-item>
-  </ion-list>
-
-  <button ion-button block (click)="login()">ENTRAR</button>
-  <button ion-button block outline>REGISTRAR</button>
-
+    <br>
+    <button ion-button block
+           (click)="LoginComEmail()">Login</button>
+    <button ion-button block 
+            (click)="cadastrarUsuario()">Cadastrar</button>
+  </div>
 </ion-content>
